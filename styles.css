@@ -1,0 +1,243 @@
+/* ==========================================
+   TUS ESTILOS ORIGINALES
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background: url('Titulo.png') center/cover;
+  color: white;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+/* NAVBAR */
+nav {
+  background: #111827;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #60a5fa;
+}
+
+/* SECCIONES COMPARTIDAS */
+section {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  width: 100%;
+}
+
+.seccion-historia h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.seccion-historia p {
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* ==========================================
+   ALINEACIÓN DE LOS DOS DIVS (FLEXBOX)
+   ========================================== */
+.contenedor-directiva {
+  display: flex;
+  justify-content: space-between; /* Espacio equilibrado entre info e imagen */
+  align-items: center;            /* Centra verticalmente ambos bloques */
+  gap: 40px;                      /* Distancia de separación intermedia */
+  margin-bottom: 60px;
+}
+
+/* Ambos bloques ocupan el mismo ancho por igual (50% y 50%) */
+.bloque-info, 
+.bloque-imagen {
+  flex: 1;
+}
+
+/* Espaciado interno de los cargos de la directiva */
+.cargo {
+  margin-bottom: 25px;
+}
+
+.cargo h2 {
+  font-size: 1.3rem;
+  color: #000000; /* Un tono azul elegante */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cargo h3 {
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: normal;
+}
+
+/* Control total de la imagen para que no rompa el diseño */
+.bloque-video video {
+  width: 100%;
+  max-width: 500px; /* Evita que la foto se haga gigante en pantallas enormes */
+  height: auto;
+  display: block;
+  margin: 0 auto;   /* Centra la imagen en su propio bloque */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+/* ==========================================
+   VERSION RESPONSIVA (MÓVILES)
+   ========================================== */
+@media (max-width: 768px) {
+  .contenedor-directiva {
+    flex-direction: column; /* Se colocan uno abajo del otro en el móvil */
+    text-align: center;     /* Centra los textos en pantallas pequeñas */
+    gap: 30px;
+  }
+}
+
+/* VIDEOS */
+.videos{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:40px 0;
+  margin-top: 75px;
+}
+
+.videos video{
+  width:600px;
+  height:auto;
+  border-radius:10px;
+  margin-top: 50px;
+}
+
+.contenedor-fotos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.foto-banda {
+  width: 100%;
+  max-width: 300px; /* Controla el tamaño máximo de las fotos */
+  height: auto;
+  border-radius: 8px; /* Bordes redondeados estéticos */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave */
+  object-fit: cover;
+}
+/* ==========================================
+   EFECTO ZOOM / LIGHTBOX (MODAL)
+   ========================================== */
+
+/* Añade un cursor de lupa a las miniaturas */
+.foto-banda {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.foto-banda:hover {
+  transform: scale(1.03); /* Un pequeño efecto visual al pasar el ratón */
+}
+
+/* El fondo negro transparente que cubre toda la pantalla */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 2000; /* Por encima de la barra de navegación */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo negro con opacidad */
+  cursor: zoom-out; /* Muestra que al hacer clic se cerrará */
+}
+
+/* La foto ampliada dentro del modal */
+.contenido-modal {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80%;
+  object-fit: contain;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); /* Centrado vertical perfecto */
+  cursor: default; /* Evita confundir dentro de la imagen */
+  border: 3px solid white;
+  border-radius: 4px;
+  animation: zoomEfecto 0.3s ease; /* Animación de apertura */
+}
+
+/* El botón de cerrar (X) arriba a la derecha */
+.cerrar-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cerrar-modal:hover {
+  color: #60a5fa;
+}
+
+/* Animación suave para que la foto aparezca escalando */
+@keyframes zoomEfecto {
+  from { transform: translateY(-50%) scale(0.7); opacity: 0; }
+  to { transform: translateY(-50%) scale(1); opacity: 1; }
+}
+
+/* Ajuste para móviles para que la foto ocupe un poco más de pantalla */
+@media (max-width: 768px) {
+  .contenido-modal {
+    width: 95%;
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Banda Maestro Zafra</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  button{
+    background-color: lightgoldenrodyellow;
+  }
+</style>
+<body>
+    <header>
+    </header>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="videos.html">Videos</a>
+      <a href="fotos.html">Fotos</a>
+    </nav>
+
+    <main>
+      <section class="galeria">
+        <h2>Nuestra Galería de Fotos</h2>
+        <p>Echa un vistazo a nuestros últimos conciertos y eventos:</p>
+        <a href="https://photos.app.goo.gl/sPzzKSDCfcTNB6sx9" target="_blank" style="text-decoration: none;">
+          <button type="button">Pincha aquí para ver las fotos del concierto de San Marcos 2025</button>
+        </a>
+        
+        <div class="contenedor-fotos">
+          <img src="IMG-20250301-WA0015.jpg" class="foto-banda">
+          <img src="IMG-20251229-WA0052.jpg" class="foto-banda">
+          <img src="IMG-20251229-WA0057.jpg" class="foto-banda">
+          <img src="IMG-20251229-WA0062.jpg" class="foto-banda">
+          <img src="IMG-20260303-WA0020.jpg" class="foto-banda">
+          <img src="ConciertoNavidad19 (10).JPG" class="foto-banda">
+          <img src="ConciertoNavidad19 (11).JPG" class="foto-banda">
+          <img src="ConciertoNavidad19 (12).JPG" class="foto-banda">
+          <img src="ConciertoNavidad19 (13).JPG" class="foto-banda">
+          <img src="ConciertoNavidad19 (4).JPG" class="foto-banda">
+          <img src="ConciertoNavidad19 (6).JPG" class="foto-banda">
+          <img src="ConciertoNavidad19 (7).JPG" class="foto-banda">
+        </div>
+      </section>
+    </main>
+
+    <div id="modal-foto" class="modal">
+      <span class="cerrar-modal">&times;</span>
+      <img class="contenido-modal" id="foto-ampliada">
+    </div>
+
+    <footer>
+      <p>© 2026 Asociación Banda de Música Maestro Zafra</p>
+    </footer>
+
+    <script>
+      const modal = document.getElementById("modal-foto");
+      const fotoAmpliada = document.getElementById("foto-ampliada");
+      const fotos = document.querySelectorAll(".foto-banda");
+
+      // Al hacer clic en cualquier foto de la galería
+      fotos.forEach(foto => {
+        foto.addEventListener("click", () => {
+          modal.style.display = "block";
+          fotoAmpliada.src = foto.src;
+        });
+      });
+
+      // Al hacer clic fuera de la foto (en el fondo oscuro) o en la 'X', se cierra
+      modal.addEventListener("click", (e) => {
+        if (e.target !== fotoAmpliada) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
+</body>
+</html>
